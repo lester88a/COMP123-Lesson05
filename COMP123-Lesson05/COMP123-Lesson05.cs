@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,39 +12,59 @@ namespace COMP123_Lesson05
         {
 
 
-            string[] carMakeList = { "Honda", "BMW", "Mercedes", "Jeep", "Ford" };
+            string[] originalArray = { "Honda", "BMW", "Mercedes", "Jeep", "Ford" };
 
-            string[] tempCarMakeList = new string[3];
+            string[] newArray = new string[3];
 
             Random rnd = new Random();
 
-            int randomCar;
+            int randomMember;
 
 
             // Assign cells from one array to another
-            for (int index = 0; index < tempCarMakeList.Length; index++)
+
+
+            int index = 0;
+            while (index < newArray.Length)
             {
+                randomMember = generateRandomMember(rnd);
 
-                randomCar = generateRandomCar(rnd);
-
-                if (carMakeList[randomCar] != "unavailable")
+                if (originalArray[randomMember] != "unavailable")
                 {
-                    tempCarMakeList[index] = carMakeList[randomCar];
+                    newArray[index] = originalArray[randomMember];
 
-                    carMakeList[randomCar] = "unavailable";
+                    originalArray[randomMember] = "unavailable";
+
+                    index++;
                 }
+
+
             }
+
+
+            /* Alternate Looping Structure
+            for (int index = 0; index < newArray.Length; index++)
+            {
+                
+                randomMember = generateRandomMember(rnd);
+                if (originalArray[randomMember] != "unavailable")
+                {
+                    newArray[index] = originalArray[randomMember];
+                    originalArray[randomMember] = "unavailable";
+                } 
+            }
+             */
 
 
 
             /* Alternate way to declare and initialize an array
-            string[] carMakeList = new string[6];
-            carMakeList[0] = "Honda";
-            carMakeList[1] = "BMW";
-            carMakeList[2] = "Mercedes";
-            carMakeList[3] = "Jeep";
-            carMakeList[4] = "Ford";
-            carMakeList[5] = "Jaguar";
+            string[] originalArray = new string[6];
+            originalArray[0] = "Honda";
+            originalArray[1] = "BMW";
+            originalArray[2] = "Mercedes";
+            originalArray[3] = "Jeep";
+            originalArray[4] = "Ford";
+            originalArray[5] = "Jaguar";
             */
 
             Console.WriteLine("++++++++++++++++++++++++");
@@ -52,31 +72,24 @@ namespace COMP123_Lesson05
             Console.WriteLine("++++++++++++++++++++++++");
 
             // Output the value of the each cell in each array
-            for (int index = 0; index < carMakeList.Length; index++)
+            for (index = 0; index < originalArray.Length; index++)
             {
-                Console.WriteLine(carMakeList[index]);
+                Console.WriteLine(originalArray[index]);
             }
 
             Console.WriteLine("++++++++++++++++++++++++");
             Console.WriteLine("+     New Car  List    +");
             Console.WriteLine("++++++++++++++++++++++++");
 
-            for (int index = 0; index < tempCarMakeList.Length; index++)
+            for (index = 0; index < newArray.Length; index++)
             {
 
-                Console.WriteLine(tempCarMakeList[index]);
+                Console.WriteLine(newArray[index]);
             }
 
 
 
-            /* Alternate method to loop through (iterate across the array)
-            int index = 0;
-            while (index < carMakeList.Length)
-            {
-                Console.WriteLine(carMakeList[index]);
-                index++;
-            }
-             */
+
 
 
 
@@ -88,7 +101,7 @@ namespace COMP123_Lesson05
 
         }
 
-        private static int generateRandomCar(Random rnd)
+        private static int generateRandomMember(Random rnd)
         {
             int randomCar;
 
